@@ -23,3 +23,36 @@ SELECT * FROM EMPLOYEE;
 update  EMPLOYEE set gender="Male" where empId=5;
 delete from EMPLOYEE where empId=3;
 SELECT * FROM EMPLOYEE;
+
+
+
+=>Practice 
+
+-- create a database table--
+create table Student(
+id int IDENTITY(1,2) PRIMARY KEY,
+name varchar(30),
+age int,
+course varchar(50)
+);
+Insert into Student values("sam",21,"CSE");
+Insert into Student values("ram",20,"EEE");
+Insert into Student values("som",23,"ECE");
+Insert into Student values("Rajesh",28,"MECH");
+Insert into Student values("Suresh",25,"CSE");
+select * from Student;
+select * from Student where age <25;
+select * from Student where course="CSE";
+update Student set course="AIML" where id=5;
+select * from Student;
+update Student set age=age+1 where id=1;
+select age from Student;
+delete from Student where id=1;
+delete from Student where age <25;
+-- truncate table Student;
+-- delete from Student;
+alter table Student add email varchar(20);
+update Student set email="abc@gmail.com" where age = 28;
+update Student set email="123@gmail.com" where age = 25;
+alter table Student drop column age;
+select * from Student;
