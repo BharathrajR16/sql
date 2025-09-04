@@ -1,0 +1,25 @@
+
+-- create
+CREATE TABLE EMPLOYEE (
+  empId int IDENTITY(1,2) PRIMARY KEY,
+  name varchar(15)  not null,
+  dept varchar(10) not null 
+);
+
+-- insert
+INSERT INTO EMPLOYEE(name,dept) VALUES ('Clark', 'Sales');
+INSERT INTO EMPLOYEE(name,dept) VALUES ('Dave', 'Accounting');
+INSERT INTO EMPLOYEE(name,dept) VALUES ('Ava', 'Sales');
+
+-- fetch 
+SELECT * FROM EMPLOYEE;
+SELECT dept FROM EMPLOYEE where name="Ava";
+alter table EMPLOYEE add gender varchar(10);
+SELECT * FROM EMPLOYEE;
+update EMPLOYEE set gender="male" where empId=1;
+update EMPLOYEE set gender="male" where empId=3;
+update EMPLOYEE set gender="female" where empId=5;
+SELECT * FROM EMPLOYEE;
+update  EMPLOYEE set gender="Male" where empId=5;
+delete from EMPLOYEE where empId=3;
+SELECT * FROM EMPLOYEE;
