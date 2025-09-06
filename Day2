@@ -13,7 +13,8 @@ values (3, 'John', 7.80, 'MECH');
 
 insert into student(id, name, gpa, department)
 values (4, 'Asha', 8.75, 'IT');
-
+insert into student(id, name, gpa, department)
+values (5, 'Kishore', 8.85, 'CSE');
 
 select * from student;
 select id,name from student where department='CSE';
@@ -27,3 +28,19 @@ select * from student where id between 1 and 3;
 select * from student where name like '%a%';
 select * from student where name like '__t%';
 select * from student where name like 'R\%';
+select department from student;
+select distinct department,gpa from student;  --remove duplicates--
+select * from student order by gpa;
+select * from student order by gpa asc;
+select * from student order by gpa desc;
+select * from student where department='CSE' order by gpa desc;
+select * from student order by name,gpa;
+select * from student order by case department when 'CSE' then 1 when 'ECE' then 2 when 'IT' then 3 when 'MECH' then 4 else 100 end;
+create table newStudent(
+id int PRIMARY KEY,
+name varchar(20),
+gpa DECIMAL(3,2)
+);
+
+insert into newStudent(id,name,gpa) select id,name,gpa from student;
+select * from newStudent;
