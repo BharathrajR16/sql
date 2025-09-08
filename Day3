@@ -1,0 +1,43 @@
+
+-- create
+CREATE TABLE EMPLOYEE (
+  empId int,
+  name varchar(15),
+  dept varchar(10)
+);
+
+-- insert
+INSERT INTO EMPLOYEE(empId,name,dept) VALUES (1, 'Clark', 'Sales');
+INSERT INTO EMPLOYEE(empId,name,dept) VALUES (2, 'Dave', 'Accounting');
+INSERT INTO EMPLOYEE(empId,name,dept) VALUES (3, 'Ava', 'Sales');
+
+-- fetch 
+SELECT * FROM EMPLOYEE;
+alter TABLE EMPLOYEE add age int;
+update EMPLOYEE set age=23 where empId=1;
+update EMPLOYEE set age=22 where empId=2;
+update EMPLOYEE set age=21 where empId=3;
+SELECT * from EMPLOYEE;
+
+create TABLE EMPLOYEE2(
+empId1 int,
+  name1 varchar(15),
+  dept1 varchar(10)
+);
+
+INSERT into EMPLOYEE2(empId1,name1,dept1) SELECT empId,name,dept from EMPLOYEE;
+SELECT * from EMPLOYEE2;
+SELECT count(*) from EMPLOYEE2;
+SELECT avg(age) from EMPLOYEE;
+SELECT sum(age) from EMPLOYEE;
+SELECT min(age) from EMPLOYEE;
+SELECT max(age) from EMPLOYEE;
+SELECT left(name,2) from EMPLOYEE;
+SELECT right(name,2) from EMPLOYEE;
+
+alter TABLE EMPLOYEE add hiringDate date;
+update EMPLOYEE set hiringDate='2025-09-09' where age =23;
+update EMPLOYEE set hiringDate='2025-08-08' where age =22;
+update EMPLOYEE set hiringDate='2025-07-07' where age =21;
+SELECT * from EMPLOYEE;
+SELECT dept,count(age) from EMPLOYEE group by dept having age>21;
