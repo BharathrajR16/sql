@@ -1,0 +1,56 @@
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY,
+    customer_name VARCHAR(100) ,
+    email VARCHAR(100) 
+);
+
+INSERT INTO customers (customer_id,customer_name, email) VALUES
+(1,'Alice', 'alice@example.com'),
+(2,'Bob', 'bob@example.com'),
+(3,'Charlie', 'charlie@example.com');
+
+CREATE TABLE products (
+    product_id INT PRIMARY KEY,
+    product_name VARCHAR(100) ,
+    price DECIMAL(10, 2) 
+);
+
+INSERT INTO products (product_id,product_name, price) VALUES
+(1,'Programming Book', 49.99),
+(2,'Coffee Mug', 14.99),
+(3,'Wireless Mouse', 29.99),
+(4,'Keyboard', 59.99);
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY,
+    order_date DATE ,
+    customer_id INT,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+);
+
+INSERT INTO orders (order_id,order_date, customer_id) VALUES
+(1,'2023-10-25', 1), 
+(2,'2023-10-26', 2), 
+(3,'2023-10-27', 2);  
+
+CREATE TABLE order_items (
+    item_id INT PRIMARY KEY,
+    order_id INT,
+    product_id INT ,
+    quantity INT  CHECK (quantity > 0),
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+INSERT INTO order_items (item_id,order_id, product_id, quantity) VALUES
+(1,1, 1, 1),  -- Order #1 has 1x 'Programming Book'
+(2,2, 2, 2),  -- Order #2 has 2x 'Coffee Mug'
+(3,2, 3, 1),  -- Order #2 has 1x 'Wireless Mouse'
+(4,3, 4, 1);  -- Order #3 has 1x 'Keyboard'
+
+select cust.customer_name,cust.email,prdct.product_name,prdct.price,ord.order_date ,ordi.order_id from customers as cust left join products as prdct on cust.customer_id=prdct.product_id
+ left join orders as ord on prdct.product_id=ord.order_id left join order_items as ordi on ord.order_id=ordi.item_id;
+
+
+
+
