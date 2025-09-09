@@ -1,0 +1,25 @@
+select 
+	dt.Product_name+'-'+Product_uom as product_name,isnull(dt.OPENING,0)OPENING,isnull(dt.INWARD,0)INWARD,isnull(dt.OUTWARD,0)OUTWARD,isnull(dt.CLOSING,0)CLOSING,isnull(stupd.ROL,0)ROL,isnull(stupd.ROQ,0)ROQ,isnull(stupd.MOQ,0)MOQ 
+	from stock_upload_head hd left join stock_upload_perfomance dt on  hd.trans_sl_no = dt.head_sl_no 
+	left join  Mas_ListedDr as ld on hd.Sf_Code=ld.Sf_Code inner join stock_upload_perfomance_details stupd on hd.trans_sl_no = stupd.head_sl_no and dt.Product_name = stupd.Product_name where hd.sf_code ='GLLMR0015' and hd.Retailer_code=10; 
+
+select outlet.Product_name,isnull(outlet.[PLAN],0) as [plan],isnull(outlet.ACHV,0) ACHV,isnull(outlet.ACHIV,0)ACHIV  
+from stock_upload_head hd left join stock_upload_outlets outlet on hd.trans_sl_no=outlet.head_sl_no where hd.sf_code='GLLMR0015' and hd.Retailer_code=10;
+
+select * from stock_upload_outlets;
+
+
+
+
+--update stock_upload_head set sf_code='GLLMR0015'
+--update stock_upload_head set Retailer_code=10;
+
+union,
+inner 
+left
+join
+
+select * from Mas_Salesforce
+select stup.Product_name,stup.Product_uom,stup.OPENING,stup.INWARD,stup.OUTWARD,stup.CLOSING from stock_upload_perfomance stup where stup.sf
+--alter table stock_upload_head alter column sf_code varchar(50)
+
