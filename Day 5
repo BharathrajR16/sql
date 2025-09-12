@@ -1,0 +1,11 @@
+select * from Mas_Salesforce;
+select CONCAT(Sf_Name,' ',Sf_UserName) from Mas_Salesforce;
+select SUBSTRING(Sf_Name,1,5) from Mas_Salesforce;
+select LEFT(Sf_Name,5) from Mas_Salesforce;
+select RIGHT(Sf_Name,5) from Mas_Salesforce;
+select replace(Sf_Name,' ','-') from Mas_Salesforce;
+select REVERSE(Sf_Name) from Mas_Salesforce;
+select FORMAT(12345,2) as mobile from Mas_Salesforce;
+select UPPER(CONCAT(Sf_Name,' ',Sf_UserName)) from Mas_Salesforce;
+select DATALENGTH(UPPER(CONCAT(Sf_Name,' ',Sf_UserName))) from Mas_Salesforce;
+select Sf_Code,Sf_Name,State_Code,SF_Status from Mas_Salesforce where State_Code<(select avg(State_Code) from Mas_Salesforce where SF_Status>1);
