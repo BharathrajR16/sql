@@ -33,3 +33,7 @@ INNER JOIN employees AS e2 ON e1.manager_id = e2.id
 INNER JOIN employees AS e3 ON e2.manager_id = e3.id
 INNER JOIN employees AS e4 ON e3.manager_id = e4.id;
 
+
+DROP VIEW names;
+create view names as select first_name,last_name from Customers;
+SELECT * FROM names;
