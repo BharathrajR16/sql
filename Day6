@@ -1,0 +1,35 @@
+-- Online SQL Editor to Run SQL Online.
+-- Use the editor to create new tables, insert data and all other SQL operations.
+drop table Employees;
+CREATE TABLE employees (
+    id INT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    title VARCHAR(100),
+    manager_id INT NULL,
+    department VARCHAR(50)
+);
+INSERT INTO employees (id,name, title, manager_id, department) VALUES
+(1,'Alice Johnson', 'CEO', NULL, 'Executive'),
+(2,'Bob Smith', 'CTO', 1, 'Technology'),
+(3,'Carol Davis', 'CFO', 1, 'Finance'),
+(4,'David Wilson', 'Software Engineer', 2, 'Technology'),
+(5,'Eva Brown', 'Senior Engineer', 2, 'Technology'),
+(6,'Frank Miller', 'Accountant', 3, 'Finance'),
+(7,'Grace Lee', 'HR Manager', 1, 'HR');
+
+select * from employees;
+select  emp.name as employee_name,
+    emp.title as employee_title,
+    mgr.name as manager_name,
+    mgr.title as manager_title  from employees as emp inner join employees mgr on emp.id=mgr.manager_id order by mgr.name, emp.name;
+
+SELECT 
+    e1.name AS employee,
+    e2.name AS manager,
+    e3.name AS director,
+    e4.name AS vp
+FROM employees AS e1
+INNER JOIN employees AS e2 ON e1.manager_id = e2.id
+INNER JOIN employees AS e3 ON e2.manager_id = e3.id
+INNER JOIN employees AS e4 ON e3.manager_id = e4.id;
+
